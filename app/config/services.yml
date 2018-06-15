@@ -45,3 +45,10 @@ services:
             autowire: true
             tags:
                 - { name: doctrine.event_subscriber }
+
+    # set createdAt and enable user account
+    app.doctrine.create_user_listener:
+            class: AppBundle\Doctrine\CreateUserListener
+            autowire: true
+            tags:
+                - { name: doctrine.event_subscriber }
