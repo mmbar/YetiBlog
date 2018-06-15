@@ -33,3 +33,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.security.login_form_authenticator:
+            class: AppBundle\Security\FormLoginAuthenticator
+            autowire: true
