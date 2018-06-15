@@ -33,6 +33,15 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    # authenticator for /login form
     app.security.login_form_authenticator:
             class: AppBundle\Security\FormLoginAuthenticator
             autowire: true
+
+    #password encoder
+    app.doctrine.password_encode_listener:
+            class: AppBundle\Doctrine\PasswordEncodeListener
+            autowire: true
+            tags:
+                - { name: doctrine.event_subscriber }
