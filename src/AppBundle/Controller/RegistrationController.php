@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     /**
      * @Route("/rejestracja", name="registration_page")
      */
-    public function indexAction(Request $request)
+    public function registerAction(Request $request)
     {
         $form = $this->createForm(RegistrationForm::class);
         $form->handleRequest($request);

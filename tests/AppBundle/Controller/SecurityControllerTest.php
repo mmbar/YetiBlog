@@ -1,18 +1,18 @@
 <?php
 
+
 namespace Tests\AppBundle\Controller;
+
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class SecurityControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testLogin()
     {
         $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
-
+        $crawler = $client->request('GET', '/login');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Hello app', $crawler->filter('.container h1')->text());
+        $this->assertCount(3, $crawler->filter('input'));
     }
 }
