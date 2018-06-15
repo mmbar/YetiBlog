@@ -52,3 +52,11 @@ services:
             autowire: true
             tags:
                 - { name: doctrine.event_subscriber }
+    # Logging user authentication events
+    app.authentication_listener:
+            class: AppBundle\EventListener\AuthenticationListener
+            tags:
+                - { name: kernel.event_listener, event: security.authentication.failure, method: onAuthenticationFailure }
+                - { name: kernel.event_listener, event: security.interactive_login, method: onAuthenticationSuccess }
+                - { name: monolog.logger, channel: auth }
+
