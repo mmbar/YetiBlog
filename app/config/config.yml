@@ -66,3 +66,17 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+# Monolog configuration
+monolog:
+    handlers:
+        app:
+            level: info
+            type:     stream
+            path:     '%kernel.logs_dir%/app.log'
+            channels: [app]
+        security_auth:
+            level:    info
+            type:     stream
+            path:     '%kernel.logs_dir%/auth.log'
+            channels: [auth]
+
