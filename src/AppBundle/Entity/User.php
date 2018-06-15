@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * User
@@ -17,7 +16,6 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @UniqueEntity("username")
  * @UniqueEntity("email")
- * @Serializer\ExclusionPolicy("all")
  *
  */
 class User implements AdvancedUserInterface, \Serializable, EquatableInterface
@@ -28,7 +26,6 @@ class User implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      *
-     * @Serializer\Expose
      */
     protected $id;
 
@@ -38,7 +35,6 @@ class User implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @Assert\NotBlank()
      * @Assert\Length(min="3")
      *
-     * @Serializer\Expose
      */
     protected $username;
 
@@ -47,7 +43,6 @@ class User implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @Assert\Email()
      * @Assert\NotBlank()
      *
-     * @Serializer\Expose
      */
     protected $email;
 
@@ -60,21 +55,18 @@ class User implements AdvancedUserInterface, \Serializable, EquatableInterface
     /**
      * @ORM\Column(name="is_active", type="boolean", nullable=true)
      *
-     * @Serializer\Expose
      */
     protected $isActive;
 
     /**
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      *
-     * @Serializer\Expose
      */
     protected $createdAt;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
      *
-     * @Serializer\Expose
      */
     protected $roles = [];
 
